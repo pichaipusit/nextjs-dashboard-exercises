@@ -24,7 +24,11 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
       {/*  NOTE: Uncomment this code in Chapter 11 */}
 
       <div className="inline-flex">
-        <PaginationArrow />
+        <PaginationArrow
+          direction="left"
+          href={createPageURL(currentPage - 1)}
+          isDisabled={currentPage <= 1}
+        />
 
         <div className="flex -space-x-px">
           {allPages.map((page, index) => {
@@ -47,7 +51,11 @@ export default function Pagination({ totalPages }: { totalPages: number }) {
           })}
         </div>
 
-        <PaginationArrow />
+        <PaginationArrow
+          direction="right"
+          href={createPageURL(currentPage + 1)}
+          isDisabled={currentPage >= totalPages}
+        />
       </div>
     </>
   );
@@ -84,14 +92,35 @@ function PaginationNumber({
   );
 }
 
-// TODO: Fix this component to disable it when there are no more pages to navigate
-// and fetch data when navigating to another page.
-function PaginationArrow() {
+function PaginationArrow({
+  href,
+  direction,
+  isDisabled,
+}: {
+  href: string;
+  direction: "left" | "right";
+  isDisabled?: boolean;
+}) {
   const className = clsx(
     "flex h-10 w-10 items-center justify-center rounded-md border",
     {
       "mr-2 md:mr-4": direction === "left",
       "ml-2 md:ml-4": direction === "right",
     }
+  );
+
+  const icon =
+    direction === "left" ? (
+      <ArrowLeftIcon className="w-4" />
+    ) : (
+      <ArrowRightIcon className="w-4" />
+    );
+
+  return isDisabled ? (
+    <div className={className}>{icon}</div>
+  ) : (
+    <Link className={className} href={href}>
+      {icon}
+    </Link>
   );
 }
