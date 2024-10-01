@@ -10,7 +10,9 @@ export default async function Page({ params }: { params: { id: string } }) {
     fetchCustomers(),
   ]);
 
-  // TODO: Show custom not found page for unavailable invoices
+  if (!invoice) {
+    notFound();
+  }
 
   return (
     <main>

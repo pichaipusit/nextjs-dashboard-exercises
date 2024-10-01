@@ -2,9 +2,6 @@ import Link from "next/link";
 import { FaceFrownIcon } from "@heroicons/react/24/outline";
 
 export default function NotFound() {
-  // TODO: Move handling error components to the right folders so that
-  // 1. Not found shows up when there's no user with that id
-  // 2. Any other errors should navigate to custom error page
   return (
     <main className="flex h-full flex-col items-center justify-center gap-2">
       <FaceFrownIcon className="w-10 text-gray-400" />

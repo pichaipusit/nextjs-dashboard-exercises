@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect } from "react";
+
 export default function Error({
   error,
   reset,
@@ -5,9 +9,9 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  // TODO:
-  // 1. Rerender when error changes and log that error out
-  // 2. What kind of component the error show to users need to be?
+  useEffect(() => {
+    console.log(error);
+  }, [error]);
 
   return (
     <main className="flex h-full flex-col items-center justify-center">
