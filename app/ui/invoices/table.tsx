@@ -12,7 +12,6 @@ export default async function InvoicesTable({
   currentPage: number;
 }) {
   const invoices = await fetchFilteredInvoices(query, currentPage);
-  // TODO: Fix the error of child components
 
   return (
     <div className="mt-6 flow-root">
@@ -48,8 +47,8 @@ export default async function InvoicesTable({
                     <p>{formatDateToLocal(invoice.date)}</p>
                   </div>
                   <div className="flex justify-end gap-2">
-                    <UpdateInvoice />
-                    <DeleteInvoice />
+                    <UpdateInvoice id={invoice.id} />
+                    <DeleteInvoice id={invoice.id} />
                   </div>
                 </div>
               </div>
