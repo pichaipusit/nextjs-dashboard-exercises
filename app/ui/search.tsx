@@ -13,6 +13,8 @@ export default function Search({ placeholder }: { placeholder: string }) {
     console.log(`Searching... ${term}`);
 
     const params = new URLSearchParams(searchParams);
+    // TODO: Hmm.. look like we miss something about pagination. What's is it?
+
     if (term) {
       params.set("query", term);
     } else {
