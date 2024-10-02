@@ -9,10 +9,13 @@ import {
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import { Button } from "./button";
 import { authenticate } from "@/app/lib/action";
+import { useActionState } from "react";
 
 export default function LoginForm() {
-  // TODO: Fix this so it can submit a user form data to server
-  const [errorMessage, formAction, isPending] = "";
+  const [errorMessage, formAction, isPending] = useActionState(
+    authenticate,
+    undefined
+  );
 
   return (
     <form action={formAction} className="space-y-3">
